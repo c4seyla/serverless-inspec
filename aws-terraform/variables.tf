@@ -1,6 +1,6 @@
 variable "region" {
   description = "The AWS region to depoy to"
-  default     = "us-east-1"
+  default     = "eu-west-2"
 }
 
 variable "instance_type" {

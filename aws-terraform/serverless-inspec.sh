@@ -16,7 +16,7 @@ sudo yum -y install nodejs
 npm install -g serverless
 
 # Clone inspec-serverless repo
-git clone https://github.com/martezr/serverless-inspec.git
+git clone https://github.com/c4seyla/serverless-inspec.git
 
 # Change directory
 cd serverless-inspec

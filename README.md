@@ -83,8 +83,10 @@ provider:
     - 'arn:aws:iam::aws:policy/ReadOnlyAccess'
   environment:
     HOME: /tmp
-    INSPEC_PROFILE: "https://github.com/martezr/serverless-inspec-profile"
-    S3_DATA_BUCKET: mreed-bucket
+    INSPEC_PROFILE: "https://github.com/c4seyla/serverless-inspec-profile"
+    S3_DATA_BUCKET: datadog-netpath
+    PROFILE_TYPE: aws
+    HOST: 3.9.237.5
 
 functions:
   inspec_scan:
