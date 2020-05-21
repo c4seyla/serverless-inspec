@@ -84,9 +84,9 @@ provider:
   environment:
     HOME: /tmp
     INSPEC_PROFILE: "https://github.com/c4seyla/serverless-inspec-profile"
-    S3_DATA_BUCKET: datadog-netpath
+    S3_DATA_BUCKET: 
     PROFILE_TYPE: aws
-    HOST: 3.9.237.5
+    HOST: 
 
 functions:
   inspec_scan:
@@ -146,6 +146,12 @@ The following environment variables are defined for the Lambda function.
 | HOME | The HOME environment variable for enabling proper execution of the Lambda function | string | `/tmp` | yes |
 | INSPEC_PROFILE | The github url of the InSpec profile to run | string | `-` | yes |
 | S3_DATA_BUCKET | The name of the Amazon Web Services (AWS) S3 bucket to store the JSON output file | string | `-` | no |
+| SSH_KEY | The name of the Amazon Web Services (AWS) S3 bucket to store the JSON output file | string | `-` | yes |
+| PROFILE_TYPE | The name of the Amazon Web Services (AWS) S3 bucket to store the JSON output file | string | `-` | yes |
+| aws_region | The name of the Amazon Web Services (AWS) S3 bucket to store the JSON output file | string | `-` | yes |
+
+
+
 
 ## Destroy the "Builder" AWS EC2 Instance
 
@@ -163,6 +169,21 @@ The Lambda function can be invoked in a generic manner that accepts parameters t
 ```json
 {
   "s3_bucket": "",
+  "aws_region": "eu-west-2",
+  "profile_type": "ssh",
+  "HOST": "ipaddress of host",
+  "SSH_KEY": "keyname saved in parameter store",
+  "inspec_profiles": [
+    "https://github.com/dev-sec/ssh-baseline"
+  ]
+}
+
+or
+
+{
+  "s3_bucket": "",
+  "aws_region": "eu-west-2",
+  "profile_type": "aws",
   "inspec_profiles": ["https://github.com/martezr/serverless-inspec-profile"]
 }
 ```
@@ -171,6 +192,11 @@ The Lambda function can be invoked in a generic manner that accepts parameters t
 |------|-------------|:----:|:-----:|:-----:|
 | inspec_profiles | The github url of the InSpec profile(s) to run | array | `-` | yes |
 | s3_bucket | The name of the Amazon Web Services (AWS) S3 bucket to store the JSON output file | string | `-` | yes |
+| profile_type | AWS or SSH | string | `-` | yes |
+| HOST | Host to perform inspec tests on | string | `-` | yes if ssh |
+| SSH_KEY | Key stored in parameter store | string | `-` | yes if ssh |
+| aws_region | allows changing of regions | string | `-` | yes |
+
 
 ## License
 
